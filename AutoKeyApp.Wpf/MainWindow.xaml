@@ -1,0 +1,58 @@
+﻿<Window x:Class="AutoKeyApp.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoKeyApp.Wpf"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Black"
+        FontSize="13"
+        MouseDown="WindowMove_MoseDown"
+        Title="Auto Save" Height="175" Width="225">
+    <DockPanel >        
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Right">
+            <MenuItem DockPanel.Dock="Top" Header="Auto Save Key" HorizontalAlignment="Left" Background="Black" Foreground="DarkGray" />
+            <MenuItem Header="_"  Background="Gray" Margin="0" Click="Minimize_Click"/>
+            <MenuItem Header="X"  Background="Red" Margin="0" Click="Close_Click"/>
+            
+        </Menu>
+        <Grid Margin="5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+            <!-- Set Keys -->
+            <Button x:Name="F4Button" Content="F4" Grid.Column="0" Grid.Row="0" Click="ChosenButton_Click" />
+            <Button x:Name="F5Button" Content="F5" Grid.Column="1" Grid.Row="0" Click="ChosenButton_Click" />
+            <Button x:Name="F6Button" Content="F6" Grid.Column="2" Grid.Row="0" Click="ChosenButton_Click" />
+        
+            <!-- time -->
+            <TextBox x:Name="TimeSpanTextBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" FontSize="15" Margin="10 5"
+                    Text="{Binding Source={x:Static local:AutoKeySettings.Default}, Path=TimeSpan}"/>
+
+
+            <Button x:Name="SecButton" Content="Sec" Grid.Column="0" Grid.Row="2" Click="TimeButtonChange_Click" />
+            <Button x:Name="MinButton" Content="Min" Grid.Column="1" Grid.Row="2" Click="TimeButtonChange_Click" />
+            <Button x:Name="HourButton" Content="Hour" Grid.Column="2" Grid.Row="2" Click="TimeButtonChange_Click" />
+
+            <!--Start/Stop button-->
+            <Button x:Name="StartButton" Content="Start" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch" Margin="60 5"
+                    Click="StartTimer_Click"/>
+
+        </Grid>
+    </DockPanel>
+</Window>
